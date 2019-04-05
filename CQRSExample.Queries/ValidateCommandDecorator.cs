@@ -8,31 +8,31 @@ using System.Threading.Tasks;
 
 namespace CQRSExample.Commands
 {
-    public class ValidateCommandDecorator<TCommand, TResult> : IQueryHandler<TCommand, object>
-        where TCommand: IQuery<object>
+    public class ValidateQueryDecorator<TQuery, TResult> : IQueryHandler<TQuery, object>
+        where TQuery: IQuery<object>
     {
-        IQueryHandler<TCommand, object> _innerHandler;
-        public ValidateCommandDecorator(IQueryHandler<TCommand, object> innerHandler)
+        IQueryHandler<TQuery, object> _innerHandler;
+        public ValidateQueryDecorator(IQueryHandler<TQuery, object> innerHandler)
         {
             _innerHandler = innerHandler;
         }
-        public List<ValidationResult> ValidateModel(TCommand command)
+        public List<ValidationResult> ValidateModel(TQuery command)
         {
             var context = new ValidationContext(command, null, null);
             var validationResults = new List<ValidationResult>();
-            Validator.TryValidateObject(command, context, validationResults, true);
+            
+            //Validator.TryValidateObject(command, context, validationResults, true);
 
             var properties = command.GetType().GetProperties();
             foreach (var property in properties)
             {
-                property.GetCustomAttributes(false);
                 var value = property.GetValue(command);
                 context.MemberName = property.Name;
                 Validator.TryValidateProperty(property.GetValue(command), context, validationResults);
             }
             return validationResults;
         }
-        public object Handle(TCommand command)
+        public object Handle(TQuery command)
         {
             var validationResults = ValidateModel(command);
             dynamic resultToReturn = validationResults.Count > 0 
@@ -41,12 +41,12 @@ namespace CQRSExample.Commands
             return resultToReturn;
         }
 
-        public async Task<object> HandleAsync(TCommand query)
+        public async Task<object> HandleAsync(TQuery query)
         {
             return await HandleAsync(query, new CancellationToken()) ;
         }
 
-        public async Task<object> HandleAsync(TCommand query, CancellationToken token)
+        public async Task<object> HandleAsync(TQuery query, CancellationToken token)
         {
             return await Task.Run<object>(() => Handle(query), token);
         }

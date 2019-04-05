@@ -1,8 +1,8 @@
 ﻿using CQRSExample.Commands;
-using CQRSExample.FrontEnd.WPF.DataAccess;
+using CQRSExample.DataAccessLayer;
 using CQRSExample.Infrastructure;
 using CQRSExample.Models;
-using CQRSExample.FrontEnd.WPF.Queries;
+using CQRSExample.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -14,7 +14,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel.DataAnnotations;
-using CQRSExample.Queries;
 
 namespace CQRSExample.FrontEnd.WPF
 {

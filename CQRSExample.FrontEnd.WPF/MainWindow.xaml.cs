@@ -1,7 +1,7 @@
 ﻿using CQRSExample.Commands;
-using CQRSExample.FrontEnd.WPF.DataAccess;
+using CQRSExample.DataAccessLayer;
 using CQRSExample.Models;
-using CQRSExample.FrontEnd.WPF.Queries;
+using CQRSExample.Queries;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
