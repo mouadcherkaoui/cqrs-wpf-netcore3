@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.60.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CQRSExample.Infrastructure\CQRSExample.Infrastructure.csproj" />
+    <ProjectReference Include="..\CQRSExample.Models\CQRSExample.Models.csproj" />
+  </ItemGroup>
+
+</Project>
