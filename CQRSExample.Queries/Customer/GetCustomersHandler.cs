@@ -7,6 +7,7 @@ using Dapper;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CQRSExqmple.DataAccessLayer;
 
 namespace CQRSExample.Queries
 {
@@ -17,7 +18,7 @@ namespace CQRSExample.Queries
         {
             _innerHandler = new DapperQueryHandler<GetCustomers, Customer[]>((data, command) =>
             {
-                command.CommandText = "";
+                command.CommandText = QueriesResolver.GetSelectFor<Customer>();
                 return command.ExecuteReader().Parse<Customer>().ToArray();
             });
         }

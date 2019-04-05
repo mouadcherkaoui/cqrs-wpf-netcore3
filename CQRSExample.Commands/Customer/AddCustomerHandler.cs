@@ -1,4 +1,6 @@
 ﻿using CQRSExample.Infrastructure;
+using CQRSExample.Models;
+using CQRSExqmple.DataAccessLayer;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,8 @@ namespace CQRSExample.Commands
             _innerHandler = new DapperCommandHandler<AddCustomer, object>((command, connection) =>
             {
                 connection.ConnectionString = ConnectionString;
+                var selectQuery = QueriesResolver.GetSelectFor<Customer>();
+
                 return connection.Execute("INSERT INTO CUSTOMERS (ID, Firstname, Lastname) Values(@ID,@Firstname,@Lastname)", command);
             });
         }

@@ -1,7 +1,9 @@
 ﻿using CQRSExample.Commands;
 using CQRSExample.DataAccessLayer;
 using CQRSExample.Models;
+using CQRSExample.Mvvm;
 using CQRSExample.Queries;
+using ExtensionsAndHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,12 +35,21 @@ namespace CQRSExample.FrontEnd.WPF
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-            var results = _mediator.Send<AddCustomer, object>(new AddCustomer()
+            var test = typeof(AddCustomer).BuildDynamicTypeWithProperties();
+            var testInstance = Activator.CreateInstance(test);
+            var customer = new AddCustomer()
             {
                 ID = Guid.NewGuid(),
-                Firstname = "test",
-                Lastname = "testtesttest"
-            });
+                Firstname = "testt",
+                Lastname = "testt"
+            };
+
+            foreach (var property in test.GetProperties())
+            {
+                property.SetValue(testInstance, property.GetValue(customer));
+            }
+            var observable = new ObservableObject<AddCustomer>(customer);
+            var results = _mediator.Send<AddCustomer, object>(customer);
             
             //Application.Current.Shutdown();
         }
