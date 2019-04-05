@@ -1,0 +1,1 @@
+# cqrs-wpf-netcore3
