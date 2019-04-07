@@ -9,7 +9,7 @@ namespace ExtensionsAndHelpers
 {
     public static class ReflectionExtensions
     {
-        public static Type BuildDynamicTypeWithProperties(this Type type)
+        public static Type BuildDynamicTypeWithProperties(this Type type, IDictionary<string, PropertyInfo> properties)
         {
             AppDomain myDomain = Thread.GetDomain();
             AssemblyName myAsmName = new AssemblyName();
@@ -25,11 +25,21 @@ namespace ExtensionsAndHelpers
             TypeBuilder myTypeBuilder = myModBuilder.DefineType($"{type.Name}AutoProxy",
                                                             TypeAttributes.Public);
 
-            CreateProperty(ref myTypeBuilder, "CustomerName", typeof(string));
+            foreach (var current in properties)
+            {
+                CreateProperty(ref myTypeBuilder, current.Key, current.Value.PropertyType);
+            }
+
+            // CreateProperty(ref myTypeBuilder, "CustomerName", typeof(string));
 
             Type retval = myTypeBuilder.CreateType();
 
             return retval;
+        }
+
+        private static void CreateProperty<TPropertyType>(ref TypeBuilder myTypeBuilder, string propertyName)
+        {
+            CreateProperty(ref myTypeBuilder, propertyName, typeof(TPropertyType));
         }
 
         private static void CreateProperty(ref TypeBuilder myTypeBuilder, string propertyName, Type propertyType)

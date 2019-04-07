@@ -35,7 +35,8 @@ namespace CQRSExample.FrontEnd.WPF
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-            var test = typeof(AddCustomer).BuildDynamicTypeWithProperties();
+            var propDict = typeof(AddCustomer).GetProperties().ToDictionary(p => p.Name, p => p);
+            var test = typeof(AddCustomer).BuildDynamicTypeWithProperties(propDict);
             var testInstance = Activator.CreateInstance(test);
             var customer = new AddCustomer()
             {
@@ -46,7 +47,7 @@ namespace CQRSExample.FrontEnd.WPF
 
             foreach (var property in test.GetProperties())
             {
-                property.SetValue(testInstance, property.GetValue(customer));
+                property.SetValue(testInstance, typeof(AddCustomer).GetProperty(property.Name).GetValue(customer));
             }
             var observable = new ObservableObject<AddCustomer>(customer);
             var results = _mediator.Send<AddCustomer, object>(customer);

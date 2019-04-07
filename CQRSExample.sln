@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSExqmple.DataAccessLayer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSExample.Mvvm", "CQRSExample.Mvvm\CQRSExample.Mvvm.csproj", "{76CB696D-3877-4D39-B1C8-F3106F917A3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsAndHelpers", "ExtensionsAndHelpers\ExtensionsAndHelpers.csproj", "{E0D6065B-C541-4BC6-8CB3-401178750897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionsAndHelpers", "ExtensionsAndHelpers\ExtensionsAndHelpers.csproj", "{E0D6065B-C541-4BC6-8CB3-401178750897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSExample.Console", "CQRSExample.Console\CQRSExample.Console.csproj", "{545C0C92-3EB4-4862-A7F6-EE053376A34E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E0D6065B-C541-4BC6-8CB3-401178750897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0D6065B-C541-4BC6-8CB3-401178750897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0D6065B-C541-4BC6-8CB3-401178750897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545C0C92-3EB4-4862-A7F6-EE053376A34E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545C0C92-3EB4-4862-A7F6-EE053376A34E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545C0C92-3EB4-4862-A7F6-EE053376A34E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545C0C92-3EB4-4862-A7F6-EE053376A34E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
