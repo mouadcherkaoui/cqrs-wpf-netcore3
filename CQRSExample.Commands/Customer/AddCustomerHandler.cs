@@ -21,7 +21,8 @@ namespace CQRSExample.Commands
             _innerHandler = new DapperCommandHandler<AddCustomer, object>((command, connection) =>
             {
                 connection.ConnectionString = ConnectionString;
-                var selectQuery = QueriesResolver.GetSelectFor<Customer>();
+                var createTableQuery = QueriesResolver.CreateTableFor<Customer>();
+                var selectQuery = QueriesResolver.SelectFor<Customer>();
 
                 return connection.Execute("INSERT INTO CUSTOMERS (ID, Firstname, Lastname) Values(@ID,@Firstname,@Lastname)", command);
             });

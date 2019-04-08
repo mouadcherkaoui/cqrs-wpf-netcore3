@@ -14,6 +14,7 @@ namespace ExtensionsAndHelpers
         MethodInfo InvokeDelegate = typeof(PropertyChangedEventHandler).GetMethod("Invoke");
         FieldBuilder eventBack = typeBuilder.DefineField("PropertyChanged", typeof(PropertyChangingEventHandler), FieldAttributes.Private);
         ConstructorInfo CreateEventArgs = typeof(PropertyChangingEventArgs).GetConstructor(new Type[] { typeof(String) });
+        MethodBuilder raiseEvent;
 
         private void Init(string typeName, string assemblyName = "DynamicAssembly", 
             string moduleName = "DynamicModule")

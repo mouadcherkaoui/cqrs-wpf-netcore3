@@ -8,6 +8,7 @@ namespace CQRSExample.Models
     public class Customer
     {
         [Required]
+        [Key]
         public Guid ID { get; set; }
         [MinLength(5)]
         public string Firstname { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CQRSExample.Console
+namespace CQRSExample.CLI
 {
     class Program
     {

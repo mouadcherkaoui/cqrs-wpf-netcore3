@@ -18,7 +18,8 @@ namespace CQRSExample.Queries
         {
             _innerHandler = new DapperQueryHandler<GetCustomers, Customer[]>((data, command) =>
             {
-                command.CommandText = QueriesResolver.GetSelectFor<Customer>();
+                command.CommandText = QueriesResolver.CreateTableFor<Customer>();
+                command.CommandText = QueriesResolver.SelectFor<Customer>();
                 return command.ExecuteReader().Parse<Customer>().ToArray();
             });
         }
