@@ -19,7 +19,7 @@
     <ProjectReference Include="..\CQRSExample.Models\CQRSExample.Models.csproj" />
     <ProjectReference Include="..\CQRSExample.Mvvm\CQRSExample.Mvvm.csproj" />
     <ProjectReference Include="..\CQRSExample.Queries\CQRSExample.Queries.csproj" />
-    <ProjectReference Include="..\CQRSExqmple.DataAccessLayer\CQRSExqmple.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\CQRSExample.DataAccessLayer\CQRSExample.DataAccessLayer.csproj" />
     <ProjectReference Include="..\ExtensionsAndHelpers\ExtensionsAndHelpers.csproj" />
   </ItemGroup>
 

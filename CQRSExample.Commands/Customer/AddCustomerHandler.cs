@@ -1,6 +1,6 @@
 ﻿using CQRSExample.Infrastructure;
 using CQRSExample.Models;
-using CQRSExqmple.DataAccessLayer;
+using CQRSExample.DataAccessLayer;
 using Dapper;
 using System;
 using System.Collections.Generic;

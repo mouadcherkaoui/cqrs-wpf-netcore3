@@ -7,7 +7,7 @@ using Dapper;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CQRSExqmple.DataAccessLayer;
+using CQRSExample.DataAccessLayer;
 
 namespace CQRSExample.Queries
 {
